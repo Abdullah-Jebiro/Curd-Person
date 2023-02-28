@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <i class="fa-solid fa-user-plus" (click)="Create()"></i>
+        <div class="card m-2 col-12 col-md-9 col-lg-5" *ngFor="let p of Persons$ | async">
+            <div class="row g-0">
+                <div class="col-md-5 p-1 d-flex justify-content-center align-items-center">
+                    <img src="" class="img-fluid rounded-circle" alt="...">
+                </div>
+                <h5 class="card-title">{{p.gender=='Male'?'Mr':"Miss"}} {{p.name}}</h5>
+                <p class="card-text mb-1">Phone : {{p.phoneNumber}}</p>
+                <p class="card-text mb-1">Address : {{p.address}}</p>
+                <p class="card-text mb-1"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+                
+                <div class="w-100 p-1 d-flex justify-content-end align-items-center">
+                    <i class="px-2  fa-solid fa-pen"></i>
+                    <i class="px-2 fa-solid fa-trash" (click)="Delete(p.id)"></i>
+                </div>
+            </div>
+        </div>
+    </div>
