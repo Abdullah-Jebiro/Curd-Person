@@ -1,0 +1,39 @@
+.card img {
+  width: 150px;
+  height: 150px;
+}
+i {
+  font-size: 25px;
+  opacity: 0.9;
+  padding: 2.5px;
+}
+i:hover {
+  font-size: 30px;
+  opacity: 1;
+  padding: 0;
+}
+.fa-pen {
+  color: rgb(91, 91, 225);
+}
+.fa-trash {
+  color: rgb(223, 75, 75);
+}
+
+.fa-user-plus {
+    padding: 15px;
+    display: block;
+    font-size: 40px;
+    background-color: black;
+    color: white;
+    border-radius: 50%; 
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+    width: 75px;
+    height: 75px;
+    z-index: 9999; 
+}
+.fa-user-plus:hover{
+  background-color:white;
+  color: black;
+}

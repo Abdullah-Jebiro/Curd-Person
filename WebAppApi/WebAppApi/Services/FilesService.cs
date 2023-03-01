@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using WebAppApi.Data;
+﻿using WebAppApi.Data;
 
 namespace WebAppApi.Services
 {
@@ -14,13 +13,19 @@ namespace WebAppApi.Services
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public string UploadFiles(IFormFile file)
+
+        public  string UploadFiles(IFormFile file)
         {
-            var fakeFileName = Path.GetRandomFileName();
-            var path = Path.Combine(Environment.CurrentDirectory+ "\\uploads", fakeFileName);
+            string fakeFileName = Path.GetRandomFileName();
+            var path = Path.Combine(Environment.CurrentDirectory ,"Uploads", fakeFileName);
             using FileStream fileStream = new(path, FileMode.Create);
             file.CopyTo(fileStream);
             return fakeFileName;
+        }
+        public byte[] GetFiles(string imageName)
+        {
+            string filePath = Path.Combine("C:\\Users\\abdullah\\Desktop\\WedApp\\WebAppApi\\WebAppApi\\Uploads", imageName);
+            return File.ReadAllBytes(filePath);
         }
     }
 }

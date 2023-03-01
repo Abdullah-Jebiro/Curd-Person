@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Net;
+using System.Runtime.Intrinsics.Arm;
 using WebAppApi.Data;
 using WebAppApi.Model;
 using WebAppApi.Model.Dtos;
@@ -39,12 +41,20 @@ namespace WebAppApi.Repository
 
         public async Task<List<Person>?> GetPersonsAsync()
         {
-            return await _context.Person.ToListAsync();
+            return await _context.Person.Select(p => new Person
+            {   Id = p.Id,
+                Datebirth = p.Datebirth,
+                Address = p.Address,
+                PhoneNumber = p.PhoneNumber,
+                Gender = p.Gender,
+                Name = Path.Combine(Environment.CurrentDirectory, "Uploads", p.Name)
+
+            }).ToListAsync();
         }
 
         public async Task<bool> IsvalidPerson(int personId)
         {
-           return await _context.Person.AnyAsync(p=>p.Id==personId);
+            return await _context.Person.AnyAsync(p => p.Id == personId);
         }
 
         public async Task PartiallyUpdatePersonAsync(JsonPatchDocument<PersonDto> dto, Person person)

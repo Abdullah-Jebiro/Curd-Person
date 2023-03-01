@@ -9,6 +9,7 @@ using WebAppApi.Data;
 using WebAppApi.Model;
 using WebAppApi.Model.Dtos;
 using WebAppApi.Repository;
+using WebAppApi.Services;
 
 namespace WebAppApi.Controllers
 {
