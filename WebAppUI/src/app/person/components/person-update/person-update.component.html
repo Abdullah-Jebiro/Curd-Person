@@ -8,114 +8,63 @@
 
         <form [formGroup]="updatePersonForm" (ngSubmit)="onSubmit()">
           <div class="form-group my-4">
-            <input
-              placeholder="Name"
-              class="form-control"
-              formControlName="name"
-            />
-            <span
-              *ngIf="updatePersonForm.get('name')?.errors?.['required'] && updatePersonForm.get('name')?.touched "
-              class="px-2"
-              >Name this required</span
-            >
+            <input placeholder="Name" class="form-control" formControlName="name" />
+            <span *ngIf="updatePersonForm.get('name')?.errors?.['required'] && updatePersonForm.get('name')?.touched "
+              class="px-2">Name this required</span>
           </div>
 
           <div class="form-group my-4">
-            <input
-              placeholder="address"
-              class="form-control"
-              formControlName="address"
-            />
+            <input placeholder="address" class="form-control" formControlName="address" />
             <span
               *ngIf="updatePersonForm.get('address')?.errors?.['required'] && updatePersonForm.get('address')?.touched "
-              class="px-2"
-              >address this required</span
-            >
+              class="px-2">address this required</span>
           </div>
 
           <div class="form-group my-4">
-            <input
-              placeholder="phoneNumber"
-              class="form-control"
-              formControlName="phoneNumber"
-            />
+            <input placeholder="phoneNumber" class="form-control" formControlName="phoneNumber" />
             <span
-              *ngIf="updatePersonForm.get('phoneNumber')?.errors?.['required'] && updatePersonForm.get('phoneNumber')?.touched "
-              class="px-2"
-              class="alert alert-danger"
-              >phone Number this required</span
-            >
+              *ngIf="updatePersonForm.get('phoneNumber')?.errors?.['required'] && updatePersonForm.get('phoneNumber')?.touched ">phone
+              Number this required</span>
           </div>
 
           <div class="form-group my-4">
-            <input
-              type="date"
-              class="form-control"
-              formControlName="datebirth"
-            />
+            <input type="date" class="form-control" formControlName="datebirth" />
             <span
               *ngIf="updatePersonForm.get('datebirth')?.errors?.['required'] && updatePersonForm.get('datebirth')?.touched "
-              class="px-2"
-              >date of birth this required</span
-            >
+              class="px-2">date of birth this required</span>
           </div>
 
           <div class="form-group my-4">
+            <img [src]="'https://localhost:7299/api/File/GetImage?imageName='+fileName" class="img-fluid rounded-circle" alt="...">
             <div class="mb-3">
               <label for="formFile" class="form-label">image</label>
-              <input
-                class="form-control"
-                accept="image/*"
-                type="file"
-                formControlName="image"
-                (change)="onFileChange($event)"
-              />
+              <input class="form-control" accept="image/*" type="file" formControlName="image"
+                (change)="onFileChange($event)" />
             </div>
-            <span
-              *ngIf="updatePersonForm.get('image')?.errors?.['required'] && updatePersonForm.get('image')?.touched "
-              class="px-2"
-              >No Image uploaded yet.</span
-            >
+            <span *ngIf="updatePersonForm.get('image')?.errors?.['required'] && updatePersonForm.get('image')?.touched "
+              class="px-2">No Image uploaded yet.</span>
           </div>
 
           <div class="form-group my-4">
             <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="gender"
-                formControlName="gender"
-                id="Male"
-                value="Male"
-                checked
-              />
+              <input class="form-check-input" type="radio" name="gender" formControlName="gender" id="Male" value="Male"
+                checked />
               <label class="form-check-label" for="Male"> Male </label>
             </div>
             <div class="form-check">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="gender"
-                formControlName="gender"
-                id="Female"
-                value="Female"
-              />
+              <input class="form-check-input" type="radio" name="gender" formControlName="gender" id="Female"
+                value="Female" />
               <label class="form-check-label" for="Female"> Female </label>
             </div>
 
             <span
               *ngIf="updatePersonForm.get('gender')?.errors?.['required'] && updatePersonForm.get('gender')?.touched "
-              class="px-2"
-              >gender this required
+              class="px-2">gender this required
             </span>
           </div>
 
-          <input
-            [disabled]="this.updatePersonForm.invalid"
-            type="submit"
-            class="btn btn-primary w-100"
-            value="Update"
-          />
+          <input [disabled]="this.updatePersonForm.invalid" type="submit" class="btn btn-primary w-100"
+            value="Update" />
         </form>
       </div>
     </div>

@@ -43,8 +43,6 @@ export class PersonService {
       );
   }
   updatePerson( person: IPerson): Observable<any> {
-    console.table(person);
-    
     return this.http.put<IPerson>(this.URL, person)
       .pipe(
         tap((data) => console.log(JSON.stringify(data))),

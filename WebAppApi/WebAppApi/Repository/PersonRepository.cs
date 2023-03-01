@@ -41,15 +41,7 @@ namespace WebAppApi.Repository
 
         public async Task<List<Person>?> GetPersonsAsync()
         {
-            return await _context.Person.Select(p => new Person
-            {   Id = p.Id,
-                Datebirth = p.Datebirth,
-                Address = p.Address,
-                PhoneNumber = p.PhoneNumber,
-                Gender = p.Gender,
-                Name = Path.Combine(Environment.CurrentDirectory, "Uploads", p.Name)
-
-            }).ToListAsync();
+            return await _context.Person.ToListAsync();
         }
 
         public async Task<bool> IsvalidPerson(int personId)

@@ -24,7 +24,7 @@ namespace WebAppApi.Services
         }
         public byte[] GetFiles(string imageName)
         {
-            string filePath = Path.Combine("C:\\Users\\abdullah\\Desktop\\WedApp\\WebAppApi\\WebAppApi\\Uploads", imageName);
+            string filePath = Path.Combine(Environment.CurrentDirectory, "Uploads", imageName);
             return File.ReadAllBytes(filePath);
         }
     }

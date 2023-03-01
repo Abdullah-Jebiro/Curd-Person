@@ -5,7 +5,8 @@
             <div class="card my-2 p-2">
                 <div class="row g-0">
                     <div class="col-md-5 p-1 d-flex justify-content-center align-items-center">
-                        <img   [src]="'https://localhost:7299/api/File/GetImage?imageName='+p.image" class="img-fluid rounded-circle" alt="...">
+                        <img [src]="'https://localhost:7299/api/File/GetImage?imageName='+p.image"
+                            class="img-fluid rounded-circle" alt="...">
                     </div>
                     <div class="col-md-7 p-2 m-auto">
                         <h5 class="card-title">{{p.gender=='Male'?'Mr':"Miss"}} {{p.name}}</h5>
@@ -15,7 +16,7 @@
                     </div>
 
                     <div class="w-100 p-1 d-flex justify-content-end align-items-center">
-                        <i class="px-2  fa-solid fa-pen"[routerLink]="['./Update', p.id]"></i>
+                        <i class="px-2  fa-solid fa-pen" [routerLink]="['./Update', p.id]"></i>
                         <i class="px-2 fa-solid fa-trash" (click)="Delete(p.id)"></i>
                     </div>
                 </div>

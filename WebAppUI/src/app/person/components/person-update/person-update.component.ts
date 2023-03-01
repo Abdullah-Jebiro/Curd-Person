@@ -29,16 +29,15 @@ export class PersonUpdateComponent {
 
     this.subs.sink = this.service.getPerson(this.id).subscribe({
       next: (date) => {
+        this.fileName = date.image;
         this.updatePersonForm.patchValue({
           name: date.name,
-          datebirth: '2000-01-02',
+          datebirth: date.datebirth.split('T')[0],
           address: date.address,
           phoneNumber: date.phoneNumber,
-          gender: date.gender
-
+          gender: date.gender,
         });
       },
-      //If there is an error in the user number or an error occurs, an alert will appear with a message explaining the error
       error: (err) => {
         console.log(err);
       },
@@ -49,23 +48,25 @@ export class PersonUpdateComponent {
       address: ['', Validators.required],
       datebirth: ['', Validators.required],
       phoneNumber: ['', Validators.required],
-      image: ['', Validators.required],
       gender: ['', Validators.required],
+      image: [''],
     });
   }
 
   onFileChange(event: any) {
 
     const file = event.target.files[0]; // get the uploaded file object
-    this.fileName = file.name;
-    this.fileUploadService.uploadFile(file)
-      .subscribe(); // call the service to upload the file
+    this.fileUploadService.uploadFile(file).subscribe(
+      (res) => this.fileName = res)
   }
 
   onSubmit(): void {
     //This function only works when the from is valid
     let person: IPerson = this.updatePersonForm.value;
-    person.id=this.id;
+    person.id = this.id;
+    person.image = this.fileName;
+    console.log(person);
+
     this.subs.sink = this.service.updatePerson(person).subscribe({
       next: (result) => {
         console.log(result);
